@@ -1,6 +1,8 @@
 """Data and utilities for testing."""
 import pandas as pd
 
+import pandas_ta as ta
+
 
 def _read_file(filename):
     from os.path import dirname, join
@@ -33,3 +35,15 @@ Chaining indicators is possible but you have to be explicit.
 Since it returns a Series named EMA_10. If needed, you may need to uniquely name it.
 '''
 
+def HMA(arr: pd.Series, n: int) -> pd.Series:
+    """
+    Returns `n`-period simple moving average of array `arr`.
+    """
+    return ta.hma(pd.Series(arr),n)
+
+
+def EMA(arr: pd.Series, n: int) -> pd.Series:
+    """
+    Returns `n`-period simple moving average of array `arr`.
+    """
+    return ta.ema(pd.Series(arr),n)
